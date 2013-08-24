@@ -19,6 +19,7 @@ function check_prog {
 
     if [[ -z $(which ${1}) ]]; then
 
+        echo "no"
         if [[ ${OS} == "Linux" ]]; then
             echo "try: sudo apt-get install ${2}"
         elif [[ ${OS} == "Darwin" ]]; then
