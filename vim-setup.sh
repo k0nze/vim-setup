@@ -12,6 +12,10 @@ if [[ ${1} == "-r" ]]; then
     rm $HOME/.vimrc
 fi
 
+# show all (Ubuntu) packets which should be installed
+if [[ ${1} == "-sud" ]]; then
+    echo "sudo apt-get install git mercurial ncurses-dev make"
+fi
 
 # function which checks if certain programs are installed
 function check_prog {
@@ -93,7 +97,6 @@ hg clone https://vim.googlecode.com/hg/ $HOME/vim
 cd $HOME/vim/src
 
 # configure vim
-## also install: sudo apt-get install ncurses-dev
 echo "configure vim"
 ./configure --with-features=huge --prefix=$HOME/.opt/vim
 
