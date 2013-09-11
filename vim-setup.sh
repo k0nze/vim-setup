@@ -64,6 +64,9 @@ check_prog make make
 # check if wget is installed
 check_prog wget wget
 
+# check if curl is installed
+check_prog curl curl
+
 # check if $HOME/.opt already exists
 if [ -e "$HOME/.opt" ]; then
     echo "$HOME/.opt already exists"
