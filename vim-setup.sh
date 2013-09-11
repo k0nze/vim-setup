@@ -15,6 +15,7 @@ fi
 # show all (Ubuntu) packets which should be installed
 if [[ ${1} == "-sud" ]]; then
     echo "sudo apt-get install git mercurial ncurses-dev make"
+    exit 0
 fi
 
 # function which checks if certain programs are installed
