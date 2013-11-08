@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# -r    : remove old files
+# -sud  : show ubuntu downloads
+
 #store current dir
 DIR=$(pwd)
 
@@ -155,6 +159,13 @@ git clone https://github.com/scrooloose/syntastic.git
 # ctrlp setup
 echo "setting up syntastic"
 git clone https://github.com/kien/ctrlp.vim.git
+
+# change htmlcomplete.vim
+if [[ ${OS} == "Darwin" ]]; then
+    sed -i '' 's/toupper(/tolower(/g' $HOME/.opt/vim/share/vim/vim74/autoload/htmlcomplete.vim
+else
+    sed -i 's/toupper(/tolower(/g' $HOME/.opt/vim/share/vim/vim74/autoload/htmlcomplete.vim
+fi
 
 # go to previous dir
 cd $DIR
