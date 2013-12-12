@@ -160,6 +160,10 @@ git clone https://github.com/scrooloose/syntastic.git
 echo "setting up syntastic"
 git clone https://github.com/kien/ctrlp.vim.git
 
+# LaTeX-Box setup
+echo "setting up LaTeX-Box"
+git clone git://github.com/LaTeX-Box-Team/LaTeX-Box.git
+
 # change htmlcomplete.vim
 if [[ ${OS} == "Darwin" ]]; then
     sed -i '' 's/toupper(/tolower(/g' $HOME/.opt/vim/share/vim/vim74/autoload/htmlcomplete.vim
