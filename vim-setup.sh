@@ -144,7 +144,7 @@ curl -so $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-patho
 # color scheme
 mkdir -p $HOME/.vim/colors
 cd $HOME/.vim/colors
-wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+wget https://raw.githubusercontent.com/michalbachowski/vim-wombat256mod/master/colors/wombat256mod.vim
 
 
 cd $HOME/.vim/bundle
