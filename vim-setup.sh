@@ -139,7 +139,8 @@ ln -s $HOME/.vimrc.d/.vimrc $HOME/.vimrc
 # pathogen setup
 echo "setting up pathogen"
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
-curl -so $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+#curl -so $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+curl -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # color scheme
 mkdir -p $HOME/.vim/colors
