@@ -187,6 +187,10 @@ fi
 # go to previous dir
 cd $DIR
 
+# installing vbundle
+mkdir $HOME/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+
 $HOME/.bin/vim +PluginInstall +qall
 
 # echo update $PATH message
