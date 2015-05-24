@@ -10,7 +10,9 @@ DIR=$(pwd)
 if [[ ${1} == "-r" ]]; then
     echo "removing old setup"
     rm -rf $HOME/.opt/vim
+    rm -rf $HOME/.opt/ctags
     rm $HOME/.bin/vim
+    rm $HOME/.bin/ctags
     rm -rf $HOME/.vim
     rm -rf $HOME/.vimrc.d
     rm $HOME/.vimrc
@@ -95,6 +97,40 @@ else
     echo "$HOME/.vim has been created"
 fi
 
+cd $DIR
+
+# download ctags
+echo "downloading ctags source"
+cd $HOME
+wget "https://github.com/shawncplus/phpcomplete.vim/raw/master/misc/ctags-5.8_better_php_parser.tar.gz" -O ctags-5.8_better_php_parser.tar.gz
+tar xvf ctags-5.8_better_php_parser.tar.gz
+cd $HOME/ctags
+
+# configure ctags
+echo "configure ctags"
+./configure --prefix=$HOME/.opt/ctags
+
+# make ctags
+echo "make ctags"
+make
+
+# make install ctags
+echo "make install ctags"
+make install
+
+# deleting source files 
+echo "deleting ctags source files"
+cd $HOME
+rm -rf $HOME/ctags
+rm -rf $HOME/ctags-5.8_better_php_parser.tar.gz
+
+# creating a symling for ctags bin
+echo "creating symlink for ctags bin"
+ln -s $HOME/.opt/ctags/bin/ctags $HOME/.bin/ctags
+
+# go back to previous dir
+cd $DIR
+
 
 
 # downloading vim source
@@ -117,14 +153,14 @@ echo "make install vim"
 make install
 
 # delete source files
-echo "deleting source files"
+echo "deleting vim source files"
 rm -rf $HOME/vim
 
 # go back to previous dir
 cd $DIR
 
 # creating symlink from .opt/vim/bin/vim to .bin
-echo "creating symlink for .vimrc"
+echo "creating symlink for vim bin"
 ln -s $HOME/.opt/vim/bin/vim $HOME/.bin/vim
 
 ### .vimrc setup
@@ -136,35 +172,10 @@ git clone https://github.com/k0nze/vimrc.git $HOME/.vimrc.d
 # symlink for .vimrc
 ln -s $HOME/.vimrc.d/.vimrc $HOME/.vimrc
 
-# pathogen setup
-echo "setting up pathogen"
-mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
-#curl -so $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-curl -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
 # color scheme
 mkdir -p $HOME/.vim/colors
 cd $HOME/.vim/colors
 wget https://raw.githubusercontent.com/michalbachowski/vim-wombat256mod/master/colors/wombat256mod.vim
-
-
-cd $HOME/.vim/bundle
-# vim-powerline setup
-echo "setting up vim-powerline"
-git clone git://github.com/Lokaltog/vim-powerline.git
-
-# syntastic setup
-echo "setting up syntastic"
-git clone https://github.com/scrooloose/syntastic.git
-
-# ctrlp setup
-echo "setting up syntastic"
-git clone https://github.com/kien/ctrlp.vim.git
-
-# LaTeX-Box setup
-echo "setting up LaTeX-Box"
-git clone git://github.com/LaTeX-Box-Team/LaTeX-Box.git
-
 
 # change htmlcomplete.vim
 if [[ ${OS} == "Darwin" ]]; then
@@ -175,6 +186,8 @@ fi
 
 # go to previous dir
 cd $DIR
+
+$HOME/.bin/vim +PluginInstall +qall
 
 # echo update $PATH message
 echo -e "\e[31myou have to update your PATH!\nPATH=$HOME/.bin:$PATH\e[m"
