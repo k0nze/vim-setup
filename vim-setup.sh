@@ -175,7 +175,7 @@ ln -s $HOME/.vimrc.d/.vimrc $HOME/.vimrc
 # color scheme
 mkdir -p $HOME/.vim/colors
 cd $HOME/.vim/colors
-wget https://raw.githubusercontent.com/michalbachowski/vim-wombat256mod/master/colors/wombat256mod.vim
+wget https://raw.githubusercontent.com/hukl/Smyck-Color-Scheme/master/smyck.vim
 
 # change htmlcomplete.vim
 if [[ ${OS} == "Darwin" ]]; then
