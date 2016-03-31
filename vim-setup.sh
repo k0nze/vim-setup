@@ -20,7 +20,7 @@ fi
 
 # show all (Ubuntu) packets which should be installed
 if [[ ${1} == "-sud" ]]; then
-    echo "sudo apt-get install git mercurial ncurses-dev make curl"
+    echo "sudo apt-get install git ncurses-dev make curl"
     exit 0
 fi
 
@@ -57,9 +57,6 @@ fi
 
 # check if git is installed
 check_prog git git
-
-# check if hg is installed
-check_prog hg mercurial
 
 # check if gcc is installed
 check_prog gcc gcc
@@ -135,7 +132,7 @@ cd $DIR
 
 # downloading vim source
 echo "downloading vim"
-hg clone https://vim.googlecode.com/hg/ $HOME/vim
+git clone https://github.com/vim/vim.git $HOME/vim
 
 # goto vim source dir
 cd $HOME/vim/src
@@ -176,6 +173,7 @@ ln -s $HOME/.vimrc.d/.vimrc $HOME/.vimrc
 mkdir -p $HOME/.vim/colors
 cd $HOME/.vim/colors
 wget https://raw.githubusercontent.com/hukl/Smyck-Color-Scheme/master/smyck.vim
+wget https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 
 # change htmlcomplete.vim
 if [[ ${OS} == "Darwin" ]]; then
