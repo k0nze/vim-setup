@@ -14,6 +14,7 @@ if [[ ${1} == "-r" ]]; then
     rm $HOME/.bin/vim
     rm $HOME/.bin/ctags
     rm -rf $HOME/.vim
+    rm -rf $HOME/vim
     rm -rf $HOME/.vimrc.d
     rm $HOME/.vimrc
 fi
@@ -139,7 +140,7 @@ cd $HOME/vim/src
 
 # configure vim
 echo "configure vim"
-./configure --with-features=huge --prefix=$HOME/.opt/vim
+./configure --with-features=huge --enable-gui=yes --prefix=$HOME/.opt/vim
 
 # make vim
 echo "make vim"
