@@ -136,4 +136,4 @@ cd $HOME/.vim/bundle/YouCompleteMe
 python install.py --clang-completer
 
 cd $HOME/.vim
-wget https://raw.githubusercontent.com/Valloric/ycmd/master/cpp/ycm/.ycm_extra_conf.py
+wget https://raw.githubusercontent.com/Valloric/ycmd/master/.ycm_extra_conf.py
