@@ -91,6 +91,8 @@ fi
 
 # check if for installed programs
 check_prog git
+check_prog wget
+check_prog tmux
 check_prog cmake
 check_prog vim
 check_prog clang
@@ -137,3 +139,12 @@ python install.py --clang-completer
 
 cd $HOME/.vim
 wget https://raw.githubusercontent.com/Valloric/ycmd/master/.ycm_extra_conf.py
+
+### .tmux.conf setup
+echo "starting .tmux.conf setup"
+
+# download .tmux.conf from github
+git clone https://github.com/k0nze/tmux_conf.git $HOME/.tmux.conf.d
+
+# symlink for .tmux.conf
+ln -s $HOME/.tmux.conf.d/tmux.conf $HOME/.tmux.conf
